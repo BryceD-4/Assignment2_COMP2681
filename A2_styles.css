@@ -1,0 +1,204 @@
+/*
+Bryce Dixon  COMP 2681  ASSIGNMENT 2  Sept 2024
+
+This is a stylesheet used within 2 html documents--> A2_Home_Page.html and A2_Other_Page.html
+These are used to create a personal website.
+
+I spent quite a bit of time deciding which items to format using percent (%) and which
+to format with viewport height (vh). I decided that I wanted the main home page display
+to remain unchanged by zooming in or out, as well as with changes in screen size. So it is
+entirely vh formatted. While I made the text and navigation bar based off of percent, as
+if someone was using the website and needed to zoom in or out to see it, then the
+text on my website will respond to this.
+*/
+
+/*
+COLOR SCHEME:
+Dark-green: #031f1c, the same as rgb(3,31,28) <main background>
+Dark grey: #1c1c1c <nav bar>
+Gold/Yellow: #e5cf87 <text>
+lighter blue: #306889 <hr and border>
+Darker blue: #0b405b <hover items>
+*/
+/*
+Font size --> % with text, and vh with symbols
+*/
+
+/*GENERAL ITEMS*/
+body { /*Main background will be dark green*/
+  background-color: #031f1c;
+}
+/*Set text size and color for various elements*/
+p, pre{
+  font-size: 180%;
+  color:#e5cf87;
+}
+h1{
+  font-size: 200%;
+}
+h2{
+  font-size: 160%;
+}
+
+h3{
+  font-size: 120%;
+}
+
+h1,h2,h3, div{
+  color:#e5cf87;
+}
+hr{
+  border: 1px solid #306889;
+}
+/*I want all of my lists to have square types*/
+ul{
+  list-style-type: square;
+}
+/*Unless otherwise indicated, all font in a list item will be 110%*/
+li *{
+  font-size: 110%;
+}
+
+/*NAVIGATION BAR*/
+
+#Website_logo {
+  display:block;
+  height:6vh; /*Use vh stops the logo from wandering around the page when dimensions are changed*/
+}
+div.NavBar{
+  position:sticky; /*I want the nav bar to always be in view when scrolling*/
+  top:0; /*Keep the nav bar at the top of the page*/
+  background-color: #1c1c1c; /*This grey went well with the dark green*/
+  display:flex; /*Use flexbox to make items in this container flexible (align in a row for this page)*/
+  justify-content: space-between; /*For the flex box items to align as desired in the row*/
+  align-items: center; /*Not really needed in msot cases, but if formatted to a large screen this may be noticeable*/
+  padding:0.5vh; /*Surrounding the flexbox items in nav bar*/
+  z-index:10; /*The nav links were dissapearing when scrolling*/
+}
+ul.navigation{
+  display:flex; /*Without this, items would be arranged as a column and not a row*/
+  list-style-type: none; /*No pointer symbols for the nav bar items*/
+  margin:0;
+  padding:0;
+  font-size: 85%; /*% allows the nav bar to be alterred by the zoom feature in the browser*/
+}
+
+li a{
+  display:block; /*This made the elements format nicely in the div container*/
+  text-align: center;
+  padding: 10px 40px; /*10 = top and bottom, 40=sides*/
+}
+a:link{ /*Links are all the same colour as the text*/
+  text-decoration: none;
+  color:#e5cf87;
+}
+a:visited{ /*Visited links are not changing colour for this webpage*/
+  text-decoration: none;
+  color:#e5cf87;
+}
+a:hover { /*when hovering over a link, it will underline and have a blue background*/
+  text-decoration: underline;
+  background-color: #0b405b;
+}
+a:hover img{ /*This is for the images that are links, they will have a blue border whe hovered*/
+  border: 2px solid #0b405b;
+}
+
+
+/*MAIN BACKGROUND*/
+div.main_background{
+  background-image: url("images/mountains.jpg"); /*the image used*/
+  filter: brightness(90%); /*Make the image a little darker to go with the page aesthetic*/
+  background-size: cover; /*The image fit the container well, and does not distort with this*/
+  background-position: top; /*Position image at the top, this looked better than center*/
+  background-repeat: no-repeat; /* Make sure image occurs only once*/
+  height: 85vh; /*Image display is relative to the viewport height*/
+  z-index: 0; /*I want this to always be at the very back*/
+}
+
+div.text_overlay{
+  position: absolute; /*Positioned relative to its ancestor (ie the background image)*/
+  top:0; /*Starts in the top left corner*/
+  left:0;
+  width:50%; /*Goes 50% of the parent container*/
+  height:100%; /*uses 100% of the parent container height*/
+  /*This allows the background to fade from left to right on top of the background image*/
+  /*The colour used matches the dark green background of the main page*/
+  background: linear-gradient(to right, rgba(3,31,28,1),rgba(3,31,28,0.9),rgba(3,31,28,0.7),rgba(3,31,28,0.6), rgba(3,31,28,0));
+  z-index: 1; /*Place on top of the main background, which is a 0 z-index*/
+}
+/*The headings and writing within this main background all use the vh (viewport height) property
+so that they maintian their display on different sized monitors.*/
+div.text_overlay h1{
+  font-size: 4.4vh;
+  padding-top: 20vh;
+}
+div.text_overlay h2{
+  font-size: 4vh;
+  padding-right:25%;/*DId not set to vh, as this formats nicely as %*/
+}
+div.text_overlay p{
+  font-size: 2.6vh;
+}
+div.text_overlay ul{
+  font-size: 2.2vh;
+}
+
+/*MOUNTAIN PHOTOS PORTION*/
+#mountain_photos{
+  scroll-margin-top:95px; /*When the nav link "mountain photos" jumps, This tells it
+  to jump to the point with a top margin of 95px. This makes the page line up nicely and the
+  nav bar won't cover the page*/
+}
+/*The two "img_control" items below are used with setting up the floating
+images to make a nice modular method to reuse*/
+.img_control_right{
+  float:right;
+  width:25%;
+}
+
+.img_control_left{
+  float:left;
+  width:25%;
+}
+
+
+/*GRID AT BOTTOM OF PAGE 1*/
+/*Used to create a container to hold the grid*/
+.grid-container{
+  display:grid; /*Allows up to have a block-level grid*/
+  grid-template-columns: 50% 50%; /*2 columns, both 50% of the parent*/
+  background-color: #e5cf87; /*Gold/yellow grid background*/
+}
+
+/*This applies to any div-child descendents of the grid-container class*/
+.grid-container div { /*This makes up the cells in the grid*/
+  background-color: #031f1c; /*Dark green cell background*/
+  margin:1%; /*Eachc ell has a small margin*/
+  object-fit: cover; /*Make the image fit the full size of the cell*/
+  overflow: hidden; /*For images used in the grid, we hide any overflow*/
+  align-content: center;/*This aligns the text cells vertically in the center*/
+}
+/*This is affecting any img-children that are descendents of div classes within the
+grid-container class*/
+.grid-container div img {
+  width:100%; /*Any image will have a width of 100% of the parent size (aka the grid cell)*/
+}
+
+/*This is a simple modularized code that I use for all heading items to have a nice
+border around them on 2 sides*/
+.bordered_item{
+  border-left-style: double; /*Border on the left and bottom are double*/
+  border-bottom-style:double;
+  border-color: #306889; /*Border is a nice light blue colour to match the <hr> elements*/
+  width: 20%; /*This stops the border from spanning the width of the page*/
+}
+
+/*PAGE 2*/
+/*This is a simple modularized section as all images used in page 2 had similar
+setup*/
+.alterred_images img{
+  width:25%;
+  display:block;
+  margin: 10px;
+}
