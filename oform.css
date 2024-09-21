@@ -113,12 +113,12 @@ fieldset#buttons{
 }
 /*I wanted the button to stand out and be easily viewable in grey scale as well, which is why I chose these colours and sizes*/
 #submit_button{
-  background-color: greenyellow;
+  background-color: rgb(127, 242, 92);
   height: 6vh;
 }
   
 #reset_button{
-  background-color:red;
+  background-color:rgb(191, 8, 8);
   height: 6vh;
 }
 
@@ -214,16 +214,18 @@ input#province:hover:invalid, input#poscode:hover:invalid, input#phone:hover:inv
 
 /*Again, this differs from the above layouts as we don't want the checkbox to be set to "flex:1". so to format this effectively, add an inline flex and adjust width*/
   /*This keeps the checkbox and label inline and nicely formatted*/
-  /*So I set this in the fieldset and then nested the label and input widths*/
+  /*So I set this in the fieldset and the label/ input widths simply inherit so that they format evenly*/
+  
   fieldset#contact_me_checkbox{
-    display:inline-flex; /*To keep the checkbox and label beside one another, we place it as inline. */
     width:100%; /*Without this, this fieldset only spans 25% due to its alterred layout display*/
-    input{
-      width:inherit;
-    }
-    label{
-      width:inherit;
-    }
+  }
+  fieldset#contact_me_checkbox input{
+    width:inherit;
+  }
+  fieldset#contact_me_checkbox label{
+    /*I could not get the label and input to stop overlapping in Safari browser (all other browsers were good) so I added this margin*/
+    margin-left: 10px;
+    width:inherit;
   }
 
   /*The checkbox has different abilities when discussing hover effects, so I chose to make it enlarge when it hovers*/
