@@ -1,0 +1,128 @@
+<!--
+Bryce Dixon  COMP 2681 ASSIGNMENT 2 SEPT 2024
+T00054766
+Page 1 of 2
+
+This is one of 2 pages for this assignment.
+this is a webpage that displays a personal website that simply displays some photos
+that I like, as well as discuss a bit about me and my inspiration. It s used to display some key features that I have learned to do with
+CSS and HTML in this course.
+This website design was completed from scratch and did not use any premade templates
+
+REFERENCES:
+1. https://www.w3schools.com/css/tryit.asp?filename=trycss_navbar_horizontal_dividers
+  - I used this as a reference to build my nav bar
+2. https://www.w3schools.com/css/css3_object-fit.asp
+  - I used this to learn more about the "object-fit" property so my objects did not distort.
+3. https://www.w3schools.com/css/css_image_transparency.asp
+  - I referred to this on how to make a nice transparent object over my main background.
+4. https://www.geeksforgeeks.org/how-to-add-filter-to-the-background-image-using-css/
+  - I used this to learn more about the effects I can use with images.
+5. https://logodesign.ai/create/choose-logo
+  -This is the website I used to create my website logo
+6. https://www.canva.com/colors/color-palette-generator/
+  - I used this website to create a color pallette based off of my images
+7. https://99designs.com/blog/creative-inspiration/web-design-ideas/
+  - Where I went to get inspiration for my website design.
+-->
+
+<!DOCTYPE html>
+<html>
+<!-- within the head, I have a link to my style sheet, as well as all the
+charset, meta keywords (used by browser if searching) and viewport items that appear in all html documents
+that we have seen in the course-->
+<head>
+  <link rel="stylesheet" href="A2_styles.css">
+
+  <meta charset="UTF-8"/>
+  <meta name="keywords" content="Bryce Outdoors Photos Programming"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bryce's Webpage Assignment 2</title> <!--The title that appears in the browser tab-->
+
+<!--No internal styles used-->
+
+</head>
+
+
+
+<body>
+  <!--My nav bar utilizes some emoticons for added effect that are displayed in modern browsers-->
+  <!--The navigation bar is created by using an unordered list in a flexbox display-->
+  <div class="NavBar">
+    <!--This logo also acts as a link to go back to the home page-->
+    <a href="index.html"><img id="Website_logo" src="images/Logo.png" alt="Website logo"></a>
+    <ul class="navigation">
+      <!--This links to the homepage html doc-->
+      <li><a href="index.html" title="This leads you to the home page"> &#x1f3E0; Home</a></li>
+      <!--This links to the "other" html page-->
+      <li><a href="A2_Other_Page.html" title="This leads you to another page"> &#x1f4f0; Go To The Other Page</a></li>
+      <!--This uses a book mark to jump to a portion of the home with the indicated #ID-->
+      <li><a href="#mountain_photos" title="This goes to some great mountain photos"> &#x1f3d4; Mountain Photos</a></li>
+      <!--This link is blank, but I liked the look of 4 links so I kept it with the proper tooltip-->
+      <li><a href="form.html" title="Contact Me"> &#128196; Contact Me</a></li>
+    </ul>
+  </div>
+
+  <!-- MAIN BACKGROUND-->
+  <div class="main_background">
+    <!--the image for the main background is set in the stylesheet-->
+    <div class="text_overlay">
+      <h1>Hello, I'm <strong>BRYCE....</strong></h1>
+      <h2>A Computer Science Student. <br>An Outdoor Enthusiast. </h2>
+      <!--I needed to utilize inline styling here to format this item properly-->
+      <!--All text below is housed within <em> property for italics-->
+      <p class="main" style="width:75%; margin-bottom:0;"><em>I created this webpage to:
+        <!--I had to set the margin to 0 so that the items did not have their default
+      margin values-->
+        <ul style="margin:0;">
+          <li>Share some photos I appreciate.</li>
+          <li>Demonstrate some of my new-found HTML and CSS skills.</li>
+        </ul>
+        </em></p>
+        <!--This clickable image was added as per the request on the rubric to
+      have a clickable image link to the ""Other Page"-->
+      <p class="main">Click the image below to visit the Other Page:</p>
+      <a style="margin-left:10%;" href="A2_Other_Page.html" title="This leads you to another page" ><img style="width:10vh;" src="images/Other_page.png" alt="image of a piece of paper"></a>
+    </div>
+  </div>
+  <hr>
+  <!--this is where the "Mountain Photos" link jumps to-->
+  <div id="mountain_photos">
+    <p class="main" style="text-align:center;"> *This section below is mainly here to display the use of the 'display', 'clear', 'float' properties, as well as building a grid*</p>
+    <hr>
+    <p class="main"> The first 2 photos and last 2 photos are aligned in different staggered formats (inline vs block):</p>
+    <!--Here I am using the standard "bordered_item" class to format a border around this element-->
+    <p class="bordered_item, main">FORMAT A:</p>
+    <!--Embedding this image within the paragraph made the image easier to float to the right and remain unchanged
+  with alterations in the viewports. in the following images, I do this same layout, but without embedding it and using block elements.-->
+    <p class="main" style="text-align:right;"><img class="img_control_right" src="images/Mountain_valley.jpg" alt="mountain and valley">
+      A photo of a pristine mountain valley -></p>
+    <img class="img_control_left" src="images/Snow_mountain.jpg" alt="mountain scenery with snow and trees">
+    <p class="main" style="clear:right;"> <- A photo of a beautiful mountain peak.</p>
+    <hr>
+    <p class="bordered_item, main">FORMAT B:</p>
+    <!--This display uses the images as block elements to have a slightly different format-->
+    <img style="display:block;" class="img_control_right" src="images/Cascade_mountains.jpg" alt="snowy mountain peaks">
+    <p class="main" style="text-align:right;">View of a lake from a mountain top -></p>
+    <!--In order for these to display in a block, I needed to make sure they cleared the floats above-->
+    <p class="main" style="clear:right;"><img class="img_control_left" src="images/mountains_snow_2.jpg" alt="view from a mountain top">
+<- A view of a mountain top from a valley bottom</p>
+  </div>
+
+  <p class="main" style="text-align:center; clear:both;">*Here are the same 4 photos arranged within a 2x2 grid*</p>
+<!--With all the float elements above, I had to make sure that this grid cleared all the floating elements-->
+  <div class="grid-container" style="clear: both;">
+    <div><img src="images/mountains_snow_2.jpg" alt="an image of snowy mountain peaks"></div>
+    <div><p class="main">A view of a mountain top from a valley bottom</p></div>
+    <div><img src="images/Snow_mountain.jpg" alt="An image of mountain scenery with snow and trees"></div>
+    <div><p class="main">A photo of a beautiful mountain peak.<p></div>
+    <div><img src="images/Cascade_mountains.jpg" alt="A view from a mountain top"></div>
+    <div><p class="main">A view of a lake from a mountain top.</p></div>
+    <div><img src="images/Mountain_valley.jpg" alt="An image of a mountain and valley"></div>
+    <div><p class="main">A photo of a pristine mountain valley. </p></div>
+  </div>
+
+<!--Closing of the body and html sections-->
+</body>
+
+</html>
